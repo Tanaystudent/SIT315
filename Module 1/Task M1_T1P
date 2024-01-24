@@ -1,0 +1,27 @@
+int ir_sensor = 7;
+int led = 8;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(ir_sensor, INPUT);
+  pinMode(led, OUTPUT);
+}
+
+void loop()
+{
+  // Read the value from the IR sensor
+  // Check if the IR sensor is HIGH
+  if (digitalRead(ir_sensor) == HIGH)
+  {
+    digitalWrite(led, HIGH);
+    Serial.println("Motion Detected"); 
+    delay(1000); // Wait for 1000 milliseconds
+  }
+  else
+  {
+    digitalWrite(led, LOW);
+    Serial.println("Motion Not Detected"); 
+    delay(1000); // Wait for 1000 milliseconds
+  }
+}
