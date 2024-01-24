@@ -16,12 +16,14 @@ void loop()
   {
     digitalWrite(led, HIGH);
     Serial.println("Motion Detected"); 
+    Serial.println("LED ON"); 
     delay(1000); // Wait for 1000 milliseconds
   }
   else
   {
     digitalWrite(led, LOW);
     Serial.println("Motion Not Detected"); 
+    Serial.println("LED OFF");
     delay(1000); // Wait for 1000 milliseconds
   }
 }
