@@ -1,17 +1,17 @@
-int ir_sensor = 7;
+int pir_sensor = 7;
 int led = 8;
 
 void setup()
 {
   Serial.begin(9600);
-  pinMode(ir_sensor, INPUT);
+  pinMode(pir_sensor, INPUT);
   pinMode(led, OUTPUT);
 }
 
 void loop()
 {
-  // Read the value from the IR sensor
-  // Check if the IR sensor is HIGH
+  // Read the value from the PIR sensor
+  // Check if the PIR sensor is HIGH
   if (digitalRead(ir_sensor) == HIGH)
   {
     digitalWrite(led, HIGH);
