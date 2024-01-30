@@ -1,15 +1,15 @@
-int ir_sensor = 2;  
+int pir_sensor = 2;  
 int led = 8;        
 
 void setup()
 {
   
   Serial.begin(9600);
-  pinMode(ir_sensor, INPUT);  
+  pinMode(pir_sensor, INPUT);  
   pinMode(led, OUTPUT);       
   
-  // Attach interrupt for IR sensor pin
-  attachInterrupt(digitalPinToInterrupt(ir_sensor), motion_detection, CHANGE);
+  // Attach interrupt for PIR sensor pin
+  attachInterrupt(digitalPinToInterrupt(pir_sensor), motion_detection, CHANGE);
 }
 
 void loop()
@@ -19,9 +19,9 @@ void loop()
 
 void motion_detection()
 {
-  // Read the value from the IR sensor
-  // Check if the IR sensor is HIGH
-  if (digitalRead(ir_sensor) == HIGH)
+  // Read the value from the PIR sensor
+  // Check if the PIR sensor is HIGH
+  if (digitalRead(pir_sensor) == HIGH)
   {
     // If motion is detected, turn on the LED
     digitalWrite(led, HIGH);
