@@ -12,7 +12,7 @@ void loop()
 {
   // Read the value from the PIR sensor
   // Check if the PIR sensor is HIGH
-  if (digitalRead(ir_sensor) == HIGH)
+  if (digitalRead(pir_sensor) == HIGH)
   {
     digitalWrite(led, HIGH);
     Serial.println("Motion Detected"); 
