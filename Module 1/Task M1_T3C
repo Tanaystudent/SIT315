@@ -1,0 +1,65 @@
+int pir_sensor = 2;    // Pin for the PIR sensor
+int ir_sensor = 3;     // Pin for the IR sensor
+int led_pir = 8;       // Pin for the PIR LED
+int led_ir = 9;        // Pin for the IR LED
+
+void setup()
+{
+
+  Serial.begin(9600);
+
+  pinMode(pir_sensor, INPUT);
+  pinMode(ir_sensor, INPUT);
+
+  pinMode(led_pir, OUTPUT);
+  pinMode(led_ir, OUTPUT);
+
+  // Attach interrupts for sensors
+  attachInterrupt(digitalPinToInterrupt(pir_sensor), pir_motion_detected, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(ir_sensor), ir_triggered, CHANGE);
+}
+
+void loop()
+{
+  // The loop is intentionally left empty, as the main tasks are handled in the interrupts
+}
+
+void pir_motion_detected()
+{
+  
+  // Check if the sensor is HIGH
+  if (digitalRead(pir_sensor) == HIGH)
+  {
+    // If motion is detected, turn on the corresponding LED
+    digitalWrite(led_pir, HIGH);
+    Serial.print("Motion Detected on PIR Sensor ");
+    Serial.println("LED ON");
+  }
+  else
+  {
+    // If IR sensor is not triggered, turn off the corresponding LED
+    digitalWrite(led_pir, LOW);
+    Serial.print("Motion Not Detected on IR Sensor ");
+    Serial.println("LED OFF");
+  }
+}
+
+void ir_triggered()
+{
+   // Check if the sensor is LOW
+  if (digitalRead(ir_sensor) == LOW)
+  {
+    // If IR sensor is triggered, turn on the corresponding LED
+    digitalWrite(led_ir, HIGH);
+    Serial.print("Motion Detected on IR Sensor ");
+    Serial.println("LED ON");
+  }
+  else
+  {
+    // If IR sensor is not triggered, turn off the corresponding LED
+    digitalWrite(led_ir, LOW);
+    Serial.print("Motion Not Detected on IR Sensor ");
+    Serial.println("LED OFF");
+  }
+}
+
